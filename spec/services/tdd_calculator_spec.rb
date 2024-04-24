@@ -48,5 +48,26 @@ RSpec.describe TddCalculator do
        result = TddCalculator.add('//;\n1;2;5')
        expect(result).to eq(8)
      end
+
+     it 'returns sum of and not include number >1000' do
+       result = TddCalculator.add('2,1001')
+       expect(result).to eq(2)
+     end
+
+     it 'returns sum for string contain *' do
+       result = TddCalculator.add('/[***]\n1***2***7')
+       expect(result).to eq(10)
+     end
+
+     it 'returns exception for negative numbers' do
+       result = TddCalculator.add('1,-6\n,-3,\n')
+       expect(result).to eq("negative numbers not allowed -6, -3")
+     end
+
+     it 'returns sum when string contain multiple delimiters' do
+       result = TddCalculator.add('//[*][%]\n1*2%8')
+       expect(result).to eq(11)
+     end
+
    end
 end
