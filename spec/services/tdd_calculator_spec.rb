@@ -28,5 +28,25 @@ RSpec.describe TddCalculator do
        result = TddCalculator.add("1,5,2,5")
        expect(result).to eq(13)
      end
+
+     it 'returns exception for negative numbers' do
+        result = TddCalculator.add("1,-5,3,-4,-6")
+        expect(result).to eq("negative numbers not allowed -5, -4, -6")
+     end
+
+     it 'returns 21 for an \n string' do
+       result = TddCalculator.add('2\n4,6\n9')
+       expect(result).to eq(21)
+     end
+
+     it 'returns invalid for an empty string' do
+       result = TddCalculator.add('1,\n')
+       expect(result).to eq('invalid')
+     end
+
+     it 'returns sum of number for string' do
+       result = TddCalculator.add('//;\n1;2;5')
+       expect(result).to eq(8)
+     end
    end
 end
